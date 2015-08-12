@@ -1,0 +1,57 @@
+/* CSS declarations go here */
+nav ul a{
+    color: #9e9e9e;
+}
+a.login-close-text{
+  color: white;}
+
+#login-username-label{
+  color: white;
+}
+
+#login-username{
+  border-color: white;
+}
+
+#login-buttons-open-change-password{
+  color: white;
+}
+.login-button{
+  color: white;
+}
+
+#signup-link{
+  color: white;
+}
+#login-old-password-label{
+  color: white;
+}
+#login-password-label{
+  color: white;
+}
+input#login-old-password{
+  border-color: white;
+}
+input#login-password{
+  border-color: white;
+}
+div.offset-s4.col{
+  text-align: right;
+}
+#mainCard{
+
+  padding-top: 50px;
+}
+
+body{
+  background-image: url(images/main.jpg);
+background-size: cover;
+}
+
+#mainBanner{
+  color: white;
+  font-size: 100px;
+  text-align: center;
+  margin-top: 15%;
+  text-shadow:  1px 1px 2px black;
+}

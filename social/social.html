@@ -1,0 +1,105 @@
+<head>
+  <title>The Social Network</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+</head>
+
+<body>
+
+    <nav class="white grey-text">
+    <div class="nav-wrapper grey-text">
+      <a href="#!" class="brand-logo grey-text">The Social Network</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse grey-text"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        {{#if currentUser}}
+        <li><a href="/profile">profile</a></li>
+        {{/if}}
+        <li><a href="#">{{> loginButtons}}</a></li>
+
+        </ul>
+      <ul class="side-nav" id="mobile-demo">
+        {{#if currentUser}}
+        <li><a href="/profile">profile</a></li>
+        {{/if}}
+        <li><a href="#">{{> loginButtons}}</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container">
+  <div class="row">
+
+    {{#if currentUser}}
+    <div id="mainCard" class="col s12 card-panel white blue-text text-darken-2 z-depth-3">
+      <div class="row">
+        {{#if isNotPresent currentUser.username}}
+        {{> newuser}}
+        {{else}}
+          {{> search}}
+        {{/if}}
+      </div>
+      {{#each searchConnection}}
+        {{> searchBox}}
+      {{/each}}
+
+  </div>
+  {{else}}
+  <h1 id="mainBanner">Making world a smaller place to live in</h1>
+  {{/if}}
+</div>
+</div>
+</body>
+
+
+<template name="search">
+  <div class="row">
+    <div class="offset-s4 col s3">
+      <input id="friends" type="text" placeholder="Search for your friends">
+    </div>
+
+  </div>
+  <div class="row">
+    <ul>
+
+      {{#if frndsi.length}}
+      {{#each frndsi}}
+      {{check}}<li><div class="row"><div class="col s2">{{firstname}}</div><div class="col s2"> {{lastname}}</div><div class="col s2">{{email}}</div><div class="col s2"><strong>{{username}}</strong></div><div class="col s2">{{#if visible username}}
+        <a id="addButton" class="waves-effect waves-light btn"><i id="icon" class="material-icons left">add</i>Add friend</a>
+        {{/if}}</div></div></li>
+      {{/each}}{{/if}}
+
+    </ul>
+  </div>
+</template>
+
+
+<template name="searchBox">
+  <div class="row">
+    <div class="offset-s4 col s3">
+      <input id="searchBox" type="text" placeholder="Search for connections">
+    </div>
+    <div class="col">
+          <a id="searchBox" class="waves-effect waves-light btn"><i id="icon" class="material-icons left"></i>search</a>
+    </div>
+  </div>
+</template>
+
+<template name="newuser">
+    <div class="row">
+      <div class="offset-s4 col">First Name : </div><div class="col s3"><input type="text" id="fnamee" name="firstName" required></div>
+    </div>
+    <div class="row">
+      <div class="offset-s4 col">Last Name : </div><div class="col s3"><input id="lnamee" type="text" name="lastName" required></div>
+    </div>
+    <div class="row">
+      <div class="offset-s4 col">Email : </div><div class="col s3"><input id="emaill" type="text" name="email" required></div>
+    </div>
+    <div class="row">
+    <div class="offset-s6 col"><a id="btnSubmit" class="waves-effect waves-light btn">Submit</a></div>
+    </div>
+</template>
+
+<template name="friendsBox">
+  <div class="row card">
+    {{pendingRequests}}
+  </div>
+</template>
